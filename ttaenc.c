@@ -276,7 +276,7 @@ void init_buffer_write(unsigned int pos) {
 	lastpos = pos;
 }
 
-__inline void get_binary(unsigned int *value, unsigned int bits) {
+static inline void get_binary(unsigned int *value, unsigned int bits) {
 	while (bit_count < bits) {
 		if (bitpos == BIT_BUFFER_END) {
 			int res = fread(BIT_BUFFER, 1,
@@ -301,7 +301,7 @@ __inline void get_binary(unsigned int *value, unsigned int bits) {
 	bit_cache &= bit_mask[bit_count];
 }
 
-__inline void get_unary(unsigned int *value) {
+static inline void get_unary(unsigned int *value) {
 	*value = 0;
 
 	while (!(bit_cache ^ bit_mask[bit_count])) {
@@ -332,7 +332,7 @@ __inline void get_unary(unsigned int *value) {
 	bit_count--;
 }
 
-__inline void put_binary(unsigned int value, unsigned int bits) {
+static inline void put_binary(unsigned int value, unsigned int bits) {
 	while (bit_count >= 8) {
 		if (bitpos == BIT_BUFFER_END) {
 			int res = fwrite(BIT_BUFFER, 1,
@@ -356,7 +356,7 @@ __inline void put_binary(unsigned int value, unsigned int bits) {
 	bit_count += bits;
 }
 
-__inline void put_unary(unsigned int value) {
+static inline void put_unary(unsigned int value) {
 	do {
 		while (bit_count >= 8) {
 			if (bitpos == BIT_BUFFER_END) {
@@ -514,7 +514,7 @@ write_wave(int *data, int byte_size, int num_chan, unsigned int len, FILE *fdout
 
 /************************* filter functions ****************************/
 
-__inline void memshl (register int *pA, register int *pB) {
+static inline void memshl (register int *pA, register int *pB) {
 	*pA++ = *pB++;
 	*pA++ = *pB++;
 	*pA++ = *pB++;
@@ -525,7 +525,7 @@ __inline void memshl (register int *pA, register int *pB) {
 	*pA   = *pB;
 }
 
-__inline void hybrid_filter (fltst *fs, int *in, int mode) {
+static inline void hybrid_filter (fltst *fs, int *in, int mode) {
 	register int *pA = fs->dl;
 	register int *pB = fs->qm;
 	register int *pM = fs->dx;
