@@ -1,4 +1,8 @@
-== TTA Lossless Audio compressor ==
+TTA Lossless Audio compressor
+===============================
+
+*Originally this is copied from http://downloads.sourceforge.net/tta/ttaenc-3.4.1-src.tgz*
+
 
 TTA performs lossless compression on multichannel 8,16 and 24 bits
 data of the Wav audio files. Being "lossless" means that no data-
@@ -9,8 +13,9 @@ will generally range between 30% - 70% of the original. TTA format
 supports both of ID3v1/v2 and APEv2 tags. Detailed format description
 is available at http://tta.sourceforge.net
 
-* Usage Instructions
-
+Usage Instructions
+------------------
+```
 ttaenc [command] [options] file(s).. <output path/>
 
 Commands:
@@ -36,12 +41,13 @@ Example usage:
   ttaenc - < file.tta -do file.wav
   ttaenc file.tta -do - > file.wav
   ttaenc -e *.wav; ttaenc -d *.tta /audio
-
+```
 When using wildcards, only the input name can be specified. The output
 names will be automatically determined as the original name with the new
 extension.
 
-* Features
+Features
+--------
 
   - Support of 8,16,24 integer,
     multichannel Wav audio files;
@@ -54,7 +60,8 @@ extension.
   - Simple and clean output files format with
     precalculated seek points table.
 
-* Contributors:
+Contributors:
+-------------
 
   Aleksander Djuric
   Pavel Zhilin
@@ -62,7 +69,8 @@ extension.
   Noam Koenigstein
   Kazuki Oikawa
 
-* Copying
+Copying
+-------
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -81,7 +89,8 @@ Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 Please see the file COPYING in this directory for full copyright
 information.
 
-* See also
+See also
+--------
 
 Please visit the TTA homepage at http://tta.sourceforge.net for the
 latest in news and downloads.
